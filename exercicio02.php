@@ -6,13 +6,13 @@ Desnvolva um programa que peça 2 notas,
   a (media < 7 e media >=5) - aluno em recuperação 
   a (mesdia <5) - aluno reprovado
   */
-$num1 = 10;
+$num1 = 4;
 $num2 =5;
 $media= ($num1+$num2)/2;
 
-if ($media >=7){
+if ($media >=6){
     echo "Você passou!";
-}else if ($media <7 && $media>=5){
+}else if ($media <6 && $media>=5){
    echo "Você está em recuperação";
 }else if ($media <5){
     echo "Você reprovou!";
