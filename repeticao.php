@@ -32,7 +32,6 @@ $tabuada1 = $tabuada1 + 1;
 
 
 /*Qual a diferença do while para o do-while?
-
 */
 
 //for
