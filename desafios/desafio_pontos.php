@@ -12,9 +12,10 @@ if (isset($_GET["enviar"])) {
         $numero2 = $_GET['numero2'];
     } else {
         $mensagem = "Número 2 Vazio";
-    }}
-    
-    if(!empty($numero1) && !empty($numero2)){
+    }
+}
+
+if (!empty($numero1) && !empty($numero2)) {
     $calculo = $numero1 + $numero2;
     if ($calculo > 20) {
         $calculo = $calculo + 8;
@@ -38,10 +39,10 @@ if (isset($_GET["enviar"])) {
 
     <form action="" method="GET">
         <label for="numero1">Número1:</label>
-        <input type="text" name="numero1" value= <?php echo $numero1?>>
+        <input type="text" name="numero1" value=<?php echo $numero1 ?>>
 
         <label for="numero2">Número2:</label>
-        <input type="text" name="numero2" value= <?php echo $numero2?>>
+        <input type="text" name="numero2" value=<?php echo $numero2 ?>>
 
         <input type="submit" value="Enviar" name="enviar">
 
@@ -53,7 +54,3 @@ if (isset($_GET["enviar"])) {
 </body>
 
 </html>
-
-
-
-
