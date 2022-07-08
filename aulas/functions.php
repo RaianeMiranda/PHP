@@ -66,5 +66,5 @@ function semana($num)
         echo "Sexta";
     } else if ($num == 7) {
         echo "Sábado";
-    } else echo "Número da semana inexistente";
+    } else echo "Número da semana inválido";
 }
