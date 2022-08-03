@@ -30,3 +30,4 @@
   }
 ?>
 <input type="button" value="Cadastrar" onclick="parent.location='cadUsuario.php'"> <!--Onclick= ao clicar redirecione para cadusuario-->
+<h3><a href="principal.php">Principal</a></h3>

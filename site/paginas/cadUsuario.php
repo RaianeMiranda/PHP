@@ -5,6 +5,7 @@ $nome = "";
 $email = "";
 $telefone = "";
 $senha = "";
+$administrador = "";
 
 $nomeErro = "";
 $emailErro = "";
@@ -32,20 +33,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) { //se isso
     else
         $senha = $_POST['senha'];
 
+    if (isset($_POST['administrador']))
+        $administrador = 1;
+    else
+        $administrador = 0;
+
     if ($email && $nome && $senha && $telefone) { //se o email e o nome e[...] não estiverem preenhidos ele não irá prosseguir e aparecera o erro do else
         // verificar se já existe o email
         $sql = $pdo->prepare("SELECT * FROM USUARIO WHERE email =?");
         if ($sql->execute(array($email))) {
             if ($sql->rowCount() <= 0) {
-                $sql = $pdo->prepare("INSERT INTO USUARIO(codigo, nome, email, telefone, senha) VALUES(null, ?, ?, ?, ?)");
+                $sql = $pdo->prepare("INSERT INTO USUARIO(codigo, nome, email, telefone, senha, administrador) VALUES(null, ?, ?, ?, ?, ?)");
 
-                if ($sql->execute(array($nome, $email, $telefone, md5($senha)))) {
+                if ($sql->execute(array($nome, $email, $telefone, md5($senha), $administrador))) {
                     $msgErro = "Dados cadastrados com sucesso!";
                     $nome = "";
                     $email = "";
                     $telefone = "";
                     $senha = ""; //isso serve para zerar as variáveis e não manter os dados no formulário
-                    header('location:listUsuario.php'); //acima de header não pode ter echo de forma alguma
+                    header('location:login.php'); //acima de header não pode ter echo de forma alguma
                 } else {
                     $msgErro = "Dados não cadastrados!";
                 }
@@ -87,7 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) { //se isso
             Senha: <input type="password" name="senha" value="<?php echo $senha ?>">
             <span class="obrigatorio">*<?php echo $senhaErro ?></span>
             <br>
-
+            <input type="checkbox" name="administrador"> Administrador
+            <br>
             <input type="submit" value="Salvar" name="submit">
         </fieldset>
     </form>
